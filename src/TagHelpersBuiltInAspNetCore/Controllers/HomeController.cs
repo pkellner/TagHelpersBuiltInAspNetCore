@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace TagHelpersBuiltInAspNetCore.Controllers
 {
@@ -13,12 +9,31 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
             return View();
         }
 
+        public IActionResult Index(int number)
+        {
+            ViewData["Id"] = number.ToString();
+
+            return View();
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
 
             return View();
         }
+
+        public IActionResult NonSuckyYouTubeEmbed()
+        {
+            return View();
+        }
+
+        public IActionResult Sample()
+        {
+            return View();
+        }
+
+ 
 
         public IActionResult Contact()
         {
@@ -28,6 +43,11 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
         }
 
         public IActionResult Error()
+        {
+            return View();
+        }
+
+        public IActionResult AboutBlog()
         {
             return View();
         }

@@ -51,9 +51,16 @@ namespace TagHelpersBuiltInAspNetCore
 
             app.UseMvc(routes =>
             {
+
+                // need route and attribute on controller:  [Area("Blogs")]
+                routes.MapRoute(name: "areaRoute",
+                template: "{area:exists}/{controller=Home}/{action=Index}");
+
+                // default route for non-areas
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
 
 
             });
