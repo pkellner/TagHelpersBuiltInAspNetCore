@@ -7,6 +7,8 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.js" type="text/javascript"></script>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css" type="text/css">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 
 
 
@@ -46,21 +48,27 @@
 
 <h1>AnchorTagHelper</h1>
 
-@Html.Raw(Html.Encode("<a asp-action='Index' asp-controller='Speaker'>Speakers</a>"))<br /><br />
+@Html.Raw(Html.Encode("<img asp-append-version='true' src='images/svcc.png' />"))<br /><br />
 <div id="DebugMe">
-    <prettytaghelper replacement-text="Speakers"><a asp-action='Index' asp-controller='Speaker'>Speakers</a></prettytaghelper>
+    <img asp-append-version='true' src='/images/svcc.png' />
 </div>
 
-@*<img asp-append-version="true" src="https://ddrt7tzfkdwdf.cloudfront.net/Images/silicon-valley-code-camp.png" />*@
+<button type="button" id="executeJqueryId">Click Me!</button>
 
+<div id="PutHereNoJquery">
+    
+</div>
 
-
+<div id="PutHereWithJquery">
+    
+</div>
 
 <script>
 
 
     $(document)
-        .ready(function() {
+        .ready(function () {
+            debugger;
             var options = {
                 "indent": "auto",
                 "indent-spaces": 2,
@@ -84,12 +92,13 @@
             $("#PutHereNoJquery").text(result1);
             $("#PutHereNoJquery").wrapAll('<xmp id="htmlXmp" class="prettyprint" />');
 
-            $('.nsyte').nonSuckyYouTubeEmbed();
+            //$('.nsyte').nonSuckyYouTubeEmbed();
             var innerHtmlWithjQuery = $("div#DebugMe")[0].innerHTML;
 
             $('#executeJqueryId')
                 .on('click',
                     function (e) {
+                        debugger;
                         var result2 = tidy_html5(innerHtmlWithjQuery, options);
                         $("#PutHereWithJquery").text(result2);
                         $("#PutHereWithJquery").wrapAll('<xmp id="htmlXmp" class="prettyprint" />');

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TagHelpersBuiltInAspNetCore.Controllers
 {
-    public class BuiltInTag : Controller
+    public class BuiltInTagController : Controller
     {
         // GET: /<controller>/
         public IActionResult Index()
@@ -17,6 +17,16 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
         }
 
         public IActionResult AnchorTagHelper()
+        {
+            return View();
+        }
+
+        public IActionResult ImageTagHelper()
+        {
+            return View();
+        }
+
+        public IActionResult CacheTagHelper()
         {
             return View();
         }
