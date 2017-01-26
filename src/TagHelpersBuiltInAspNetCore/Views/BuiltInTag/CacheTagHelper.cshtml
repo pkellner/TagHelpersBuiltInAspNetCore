@@ -92,9 +92,18 @@
                                 Current Time Inside Cache Tag Helper: @DateTime.Now
                             </Cache>
                             <br />
+                            @{
+                                var x = new DateTimeOffset(DateTime.Now.AddSeconds(5));
+                                DateTime xx = DateTime.Now.Date + new TimeSpan(18, 30, 00);
+                                DateTime xxx = DateTime.Now + new TimeSpan(0, 1, 00);
+                                DateTime xxxx = new DateTime(2017,1,26,10,0,0); // this works
+                                var str = xx.ToString();
+                            }
                             expires after (working) <Cache expires-after="@TimeSpan.FromSeconds(5)">@DateTime.Now</Cache>
                             <br />
                             expires on (not working) <Cache expires-on="@DateTime.Now.AddSeconds(5)">@DateTime.Now</Cache>
+                            <br/>
+                            expires on with x (not sure) Exp: @xxxx <Cache expires-on="@xxxx">@DateTime.Now</Cache>
                            
                             
                         </div>
