@@ -26,9 +26,27 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
             return View();
         }
 
-        public IActionResult CacheTagHelper()
+        public IActionResult CacheTagHelper(string id,string myParam1,string myParam2,string myParam3)
         {
-            return View();
+            if (id == "login" && !string.IsNullOrEmpty(myParam1))
+            {
+                
+            }
+
+            string viewName = id == null
+                ? "CacheTagHelper/no-parameters"
+                : "CacheTagHelper/" + id;
+
+            return View(viewName, myParam1 + myParam2);
         }
+
+        
+
+        //[Route("CacheTagHelper/{id:string}")]
+        //public IActionResult CacheTagHelper(string id)
+        //{
+        //    string viewName = "CacheTagHelper/" + id;
+        //    return View(viewName);
+        //}
     }
 }
