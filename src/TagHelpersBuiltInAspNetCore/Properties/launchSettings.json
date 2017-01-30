@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:21496/",
+      "applicationUrl": "http://localhost:2651/BuiltInTag/CacheTagHelper",
       "sslPort": 0
     }
   },
@@ -11,7 +11,6 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "BuiltInTag/CacheTagHelper",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

@@ -6,7 +6,7 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>1830b28a-9b83-4220-b59b-9ee27650bff8</ProjectGuid>
+    <ProjectGuid>1b488a81-2c6b-466c-b195-af86d246794d</ProjectGuid>
     <RootNamespace>TagHelpersBuiltInAspNetCore</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
