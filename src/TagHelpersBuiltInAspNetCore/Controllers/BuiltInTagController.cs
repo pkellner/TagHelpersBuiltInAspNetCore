@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -34,7 +35,8 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
                 ? "CacheTagHelper/no-parameters"
                 : "CacheTagHelper/" + id;
 
-           
+
+
                 int num1;
                 int num2;
                 int.TryParse(myParam1, out num1);
