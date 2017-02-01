@@ -79,6 +79,9 @@
                     var loggedInUser = User.Identity.IsAuthenticated ?
                         User.Identity.Name : "No User Logged In";
                 }
+
+                Logged In User: @User.Identity.Name
+                <br/>
                 <h1>Logged In User: @loggedInUser</h1>
             </div>
         </div>

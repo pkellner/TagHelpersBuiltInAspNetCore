@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -28,16 +29,20 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
 
         public IActionResult CacheTagHelper(string id,string myParam1,string myParam2,string myParam3)
         {
-            if (id == "login" && !string.IsNullOrEmpty(myParam1))
-            {
-                
-            }
-
+            
             string viewName = id == null
                 ? "CacheTagHelper/no-parameters"
                 : "CacheTagHelper/" + id;
 
-            return View(viewName, myParam1 + myParam2);
+           
+                int num1;
+                int num2;
+                int.TryParse(myParam1, out num1);
+                int.TryParse(myParam2, out num2);
+                return View(viewName, num1 + num2);
+            
+
+            //return View(viewName, myParam1 + myParam2);
         }
 
         
