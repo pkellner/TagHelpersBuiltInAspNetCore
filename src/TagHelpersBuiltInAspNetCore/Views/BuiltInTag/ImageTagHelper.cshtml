@@ -53,58 +53,60 @@
 
 </head>
 <body>
-    <div>
+<br/><br/>
+<div>
 
-        <div id="RawText" style="visibility: collapse;">
-            @Html.Raw("<img src='images/a.jpg'  asp-append-version='true' />")
+    <div id="RawText" style="visibility: collapse;">
+        @Html.Raw("<img src='images/a.jpg'  asp-append-version='true' />")
+    </div>
+
+    <div class="container backcolor classWithPad">
+
+        <div class="row backcolortop">
+            <div class="col-sm-8">
+                <h1>ImageTagHelper</h1>
+            </div>
         </div>
 
-        <div class="container backcolor classWithPad">
-
-            <div class="row backcolortop">
-                <div class="col-sm-8">
-                    <h1>ImageTagHelper</h1>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <h2>Tag Helper on Page</h2>
-                    <pre id="RawTagHelperText">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Tag Helper on Page</h2>
+                <pre id="RawTagHelperText">
                 </pre>
-                </div>
             </div>
+        </div>
 
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <h2>Actual HTML on Page</h2>
-                    <pre id="PutHereNoJquery">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Actual HTML on Page</h2>
+                <pre id="PutHereNoJquery">
                 </pre>
-                </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="classWithPad">
-                        <div id="DebugMe">
-                            <img src='/images/a.jpg' asp-append-version='true' />
-                        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="classWithPad">
+                    <div id="DebugMe">
+                        <img src='/images/a.jpg'
+                             asp-append-version='true'/>
                     </div>
                 </div>
             </div>
-
-
         </div>
 
 
     </div>
 
 
+</div>
 
 
 
-    <script>
+
+
+<script>
     $(document)
         .ready(function() {
             var options = {
@@ -136,7 +138,7 @@
             $("#PutHereNoJquery").wrapAll('<xmp id="htmlXmp" class="prettyprint" />');
         });
 
-    </script>
+</script>
 
 
 </body>

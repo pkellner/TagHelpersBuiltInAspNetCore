@@ -18,39 +18,38 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
             return View();
         }
 
+        public IActionResult ImageTagHelper()
+        {
+            return View();
+        }
+
+        public IActionResult CacheTagHelper(string id, string myParam1, string myParam2, string myParam3)
+        {
+
+            string viewName = id == null
+                ? "CacheTagHelper/no-parameters"
+                : "CacheTagHelper/" + id;
+
+            int num1;
+            int num2;
+            int.TryParse(myParam1, out num1);
+            int.TryParse(myParam2, out num2);
+            return View(viewName, num1 + num2);
+        }
+
         public IActionResult AnchorTagHelper()
         {
             return View();
         }
 
-        public IActionResult ImageTagHelper()
-        {
-            return View();
-        }
+        
 
         public IActionResult EnvironmentTagHelper()
         {
             return View();
         }
 
-        public IActionResult CacheTagHelper(string id,string myParam1,string myParam2,string myParam3)
-        {
-            
-            string viewName = id == null
-                ? "CacheTagHelper/no-parameters"
-                : "CacheTagHelper/" + id;
-
-
-
-                int num1;
-                int num2;
-                int.TryParse(myParam1, out num1);
-                int.TryParse(myParam2, out num2);
-                return View(viewName, num1 + num2);
-            
-
-            //return View(viewName, myParam1 + myParam2);
-        }
+        
 
         
 
