@@ -1,30 +1,18 @@
-﻿@using Microsoft.Extensions.Caching.Memory
-<!DOCTYPE html>
-
-@{
-    Layout = "";
-}
+﻿<!DOCTYPE html>
 
 <html>
-
-@{
-    string attributeName = "priority";
-}
-
-
 <head>
-    <title>CacheTagHelper Attribute: @attributeName</title>
+    <title>EnvironmentTagHelper</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="~/css/main.css" property="stylesheet" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="~/css/main.css" property="stylesheet" rel="stylesheet" type="text/css" media="screen" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="~/js/tidy.js"></script>
-    <link href="~/css/CodeMirror.css" rel="stylesheet"/>
+    <link href="~/css/CodeMirror.css" rel="stylesheet" />
 
 
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-
 
     <style type="text/css">
         body {
@@ -65,67 +53,71 @@
 
 </head>
 <body>
-<div>
-
-
-
-    <div class="container backcolor classWithPad">
-
-        <div class="row backcolortop">
-            <div class="col-sm-8">
-                <h1>CacheTagHelper Attribute: @attributeName</h1>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <h2>Tag Helper on Page Colorized</h2>
-                <pre id="RawTagHelperText">
-                </pre>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-sm-12">
-                <h2>Actual HTML on Page Colorized</h2>
-                <pre id="PutHereNoJquery">
-                </pre>
-            </div>
-        </div>
-        
-        @{
-            var rawStr = @"
-<Cache priority='@CacheItemPriority.Low'>
-  Current Time Inside Cache Tag Helper: @DateTime.Now
-</Cache>";
-        }
+    <div>
 
         <div id="RawText" style="visibility: collapse;">
-            @Html.Raw(@rawStr)
+            @{
+                var rawHtml = @"<environment names='Development'>
+  <b>Dev</b>
+</environment>
+<environment names='Staging,Production'>
+  <i>Production</i>
+</environment>".Trim();
+            }
+            @Html.Raw(@rawHtml)
         </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <h2>Rendered</h2>
-                <div class="classWithPad">
-                    <div id="DebugMe">
-                        <Cache priority='@CacheItemPriority.Low'>Current Time Inside Cache Tag Helper: @DateTime.Now</Cache>
+
+        <div class="container backcolor classWithPad">
+
+            <div class="row backcolortop">
+                <div class="col-sm-8">
+                    <h1>EnvironmentTagHelper</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Tag Helper on Page</h2>
+                    <pre id="RawTagHelperText">
+                </pre>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Actual HTML on Page</h2>
+                    <pre id="PutHereNoJquery">
+                </pre>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="classWithPad">
+                        <div id="DebugMe">
+                            <environment names='Development'>
+                                <b>Dev</b>
+                            </environment>
+                            <environment names='Staging,Production'>
+                                <i>Production</i>
+                            </environment>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
 
 
     </div>
 
 
-</div>
 
 
 
-
-
-<script>
+    <script>
     $(document)
         .ready(function() {
             var options = {
@@ -152,13 +144,12 @@
             $("#RawTagHelperText").wrapAll('<xmp id="htmlXmp" class="prettyprint" />');
 
             var innerHtmlNojQuery = $("div#DebugMe")[0].innerHTML;
-            debugger;
             var result1 = tidy_html5(innerHtmlNojQuery, options);
             $("#PutHereNoJquery").text(result1);
             $("#PutHereNoJquery").wrapAll('<xmp id="htmlXmp" class="prettyprint" />');
         });
 
-</script>
+    </script>
 
 
 </body>
