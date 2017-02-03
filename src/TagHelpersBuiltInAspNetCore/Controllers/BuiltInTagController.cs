@@ -18,6 +18,15 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
             return View();
         }
 
+        public IActionResult AnchorTagHelper(string id)
+        {
+            string viewName = id == null
+                ? "AnchorTagHelper/controller-action"
+                : "AnchorTagHelper/" + id;
+
+            return View(viewName);
+        }
+
         public IActionResult ImageTagHelper()
         {
             return View();
@@ -37,10 +46,7 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
             return View(viewName, num1 + num2);
         }
 
-        public IActionResult AnchorTagHelper()
-        {
-            return View();
-        }
+       
 
         
 
