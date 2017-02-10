@@ -102,7 +102,7 @@
                     <div class="classWithPad">
                         <div id="DebugMe">
                             @*any browser agent will effect this*@ 
-                            <Cache vary-by-header="User-Agent">
+                            <Cache vary-by-header="User-Agent,Accept-Language">
                                 Current Time Inside Cache Tag Helper with vary-by-header="User-Agent" : @DateTime.Now
                             </Cache>
                         </div>
