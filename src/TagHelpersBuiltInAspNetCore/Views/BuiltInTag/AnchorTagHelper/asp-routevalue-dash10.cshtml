@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using TagHelpersBuiltInAspNetCore.Controllers
+@model SpeakerData
+
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -57,7 +61,7 @@
 <div>
 
     <div id="RawText" style="visibility: collapse;">
-        @Html.Raw("<a asp-action='Index' asp-controller='Speaker'>Speakers</a>")
+        @Html.Raw("<a asp-controller='Speaker' asp-action='Detail' asp-route-id=10 > SpeakerId: 10</a>")
     </div>
 
     <div class="container backcolor classWithPad">
@@ -89,9 +93,8 @@
             <div class="col-sm-12">
                 <div class="classWithPad">
                     <div id="DebugMe">
-                        <a  asp-controller="speaker" asp-action="Index">
-                            Speakers
-                        </a>
+                        <a asp-controller='Speaker' asp-action='Detail' 
+                           asp-route-id=10>SpeakerId: 10</a>
                     </div>
                 </div>
             </div>

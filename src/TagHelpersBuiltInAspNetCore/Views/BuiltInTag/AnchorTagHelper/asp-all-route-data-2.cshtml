@@ -1,15 +1,19 @@
 ﻿<!DOCTYPE html>
 
 <html>
+@{
+    string attributeName = "asp-protocol";
+}
+
 <head>
-    <title>AnchorTagHelper</title>
+    <title>AnchorTagHelper attribute: @attributeName</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="~/css/main.css" property="stylesheet" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/css/main.css" property="stylesheet" rel="stylesheet" type="text/css" media="screen"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="~/js/tidy.js"></script>
-    <link href="~/css/CodeMirror.css" rel="stylesheet" />
+    <link href="~/css/CodeMirror.css" rel="stylesheet"/>
 
 
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
@@ -21,7 +25,7 @@
         }
 
         .container {
-            width: 90%; 
+            width: 90%;
         }
 
         div.row {
@@ -55,50 +59,63 @@
 <body>
 <br/><br/>
 <div>
+    
+    @{
+        var dict =
+            new Dictionary<string, string>
+            {
+                {"id", "101"},
+                {"speakerId", "11"},
+                {"currentYear", "true"}
+            };
+    }
 
-    <div id="RawText" style="visibility: collapse;">
-        @Html.Raw("<a asp-action='Index' asp-controller='Speaker'>Speakers</a>")
-    </div>
-
-    <div class="container backcolor classWithPad">
-
-        <div class="row backcolortop">
-            <div class="col-sm-8">
-                <h1>AnchorTagHelper</h1>
-            </div>
+        <div id="RawText" style="visibility: collapse;">
+            @Html.Raw("<a asp-route='speakerdetail' asp-all-route-data='dict'>SpeakerEvals</a>")
         </div>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <h2>Tag Helper on Page</h2>
-                <pre id="RawTagHelperText">
+        <div class="container backcolor classWithPad">
+
+            <div class="row backcolortop">
+                <div class="col-sm-8">
+                    <h1>AnchorTagHelper</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>AnchorTagHelper attribute: @attributeName</h2>
+                    <pre id="RawTagHelperText">
                 </pre>
+                </div>
             </div>
-        </div>
 
 
-        <div class="row">
-            <div class="col-sm-12">
-                <h2>Actual HTML on Page</h2>
-                <pre id="PutHereNoJquery">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Actual HTML on Page</h2>
+                    <pre id="PutHereNoJquery">
                 </pre>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="classWithPad">
-                    <div id="DebugMe">
-                        <a  asp-controller="speaker" asp-action="Index">
-                            Speakers
-                        </a>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="classWithPad">
+                        <div id="DebugMe">
+                            <a asp-route='speakerdetail'
+                               asp-all-route-data='dict'>
+                                SpeakerEvals
+                            </a>    
+                        </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
-
-
-    </div>
 
 
 </div>

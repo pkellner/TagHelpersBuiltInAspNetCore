@@ -102,6 +102,8 @@
                     <div class="classWithPad">
                         <div id="DebugMe">
                             @*any parameters: /CacheTagHelper/vary-by-route=... startup.cs has routes*@
+                            <Cache vary-by="@M"
+                            
                             <Cache vary-by-route="myParam1,myParam3">
                                 Current Time Inside Cache Tag Helper with vary-by-route=id" : @DateTime.Now
                             </Cache>

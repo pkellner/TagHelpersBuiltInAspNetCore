@@ -24,8 +24,38 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
                 ? "AnchorTagHelper/controller-action"
                 : "AnchorTagHelper/" + id;
 
-            return View(viewName);
+            var speaker = new SpeakerData
+            {
+                SpeakerId = 12
+            };      
+
+            return View(viewName, speaker);
         }
+
+        public IActionResult AnchorTagHelperRouteValue()
+        {
+            string viewName = 
+                "AnchorTagHelper/" + "asp-routevalue-dash10";
+
+            var speaker = new SpeakerData
+            {
+                SpeakerId = 12
+            };
+
+            return View(viewName, speaker);
+        }
+
+        //public IActionResult AnchorTagHelperRouteValueDash(int id)
+        //{
+        //    //http://localhost:2651/BuiltInTag/AnchorTagHelper/asp-routevalue-dash/
+        //    string viewName = "BuiltInTag/AnchorTagHelper/asp-routevalue-dash/";
+        //    var speaker = new TagHelpersBuiltInAspNetCore.Controllers.SpeakerData()
+        //    {
+        //        SpeakerId = 12
+        //    };
+        //    return View(viewName, speaker);
+        //    //return View(@"BuiltInTag/AnchorTagHelper/asp-routevalue-dash");
+        //}
 
         public IActionResult ImageTagHelper()
         {
@@ -43,12 +73,23 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
             int num2;
             int.TryParse(myParam1, out num1);
             int.TryParse(myParam2, out num2);
-            return View(viewName, num1 + num2);
+
+            var model = new ModelParam
+            {
+                Sum = num1 + num2,
+                Param1 = "value1",
+                Param2 = "value2"
+            };
+
+
+            return View(viewName, model);
         }
 
        
 
-        
+
+
+
 
         public IActionResult EnvironmentTagHelper()
         {
@@ -65,5 +106,18 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
         //    string viewName = "CacheTagHelper/" + id;
         //    return View(viewName);
         //}
+    }
+
+    public class ModelParam
+    {
+        public int Sum { get; set; }
+        public string Param1 { get; set; }
+        public string Param2 { get; set; }
+    }
+
+    public class Speaker
+    {
+        public int SpeakerId { get; set; }
+        public string SpeakerName { get; set; }
     }
 }

@@ -6,17 +6,21 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
 {
     public class SpeakerController : Controller
     {
-        public List<ModelData> Speakers = new List<ModelData>
+        public List<SpeakerData> Speakers = new List<SpeakerData>
         {
-            new ModelData {SpeakerId = 10},
-            new ModelData {SpeakerId = 11},
-            new ModelData {SpeakerId = 12}
+            new SpeakerData {SpeakerId = 10},
+            new SpeakerData {SpeakerId = 11},
+            new SpeakerData {SpeakerId = 12}
         };
 
-        [Route("Speaker/{id:int}")]
+        public int SpeakerId;
+
+        [Route("Speaker/{id}",Name="speakerdetail")]
         public IActionResult Detail(int id)
         {
-            return View(Speakers.FirstOrDefault(a => a.SpeakerId == id));
+            SpeakerId = id;
+            return View(Speakers.
+                FirstOrDefault(a => a.SpeakerId == id));
         }
 
         
@@ -32,6 +36,14 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
             return View();
         }
 
+        [Route("/Speaker/{speakerId}/EvaluationsCount", 
+            Name = "speakerevalscount")]
+        public IActionResult EvaluationsCount(string speakerId)
+        {
+            return View();
+        }
+
+
         // GET: /<controller>/
         public IActionResult Index()
         {
@@ -39,7 +51,7 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
         }
     }
 
-    public class ModelData
+    public class SpeakerData
     {
         public int SpeakerId { get; set; }
     }

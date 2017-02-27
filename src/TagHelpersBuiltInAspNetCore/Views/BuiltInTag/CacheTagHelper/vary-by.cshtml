@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@model TagHelpersBuiltInAspNetCore.Controllers.ModelParam
 
 @{
     Layout = "";
@@ -108,8 +109,14 @@
                             *@ 
                             
                             <Cache vary-by="@Model">
-                                Current Time Inside Cache Tag Helper with vary-by=@Model" : @DateTime.Now
+                                Current Time Inside Cache Tag Helper with vary-by=@Model.Sum" : @DateTime.Now
                             </Cache>
+                            
+                            <Cache vary-by="@Model">
+                                Current Time Inside Cache Tag Helper with vary-by=@Model.Param1+@Model.Param2" : @DateTime.Now
+                            </Cache>
+                            
+
                         </div>
                     </div>
                 </div>

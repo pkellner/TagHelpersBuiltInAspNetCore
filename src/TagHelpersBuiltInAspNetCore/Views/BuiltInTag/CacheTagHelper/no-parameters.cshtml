@@ -91,9 +91,15 @@
                 </pre>
             </div>
         </div>
+        
+        @*@Html.Raw("<Cache>")
+        <br />
+        @Html.Raw("  Current Time Inside Cache Tag Helper: @DateTime.Now")
+        <br />
+        @Html.Raw("</Cache>");*@
 
         <div id="RawText" style="visibility: collapse;">
-            @Html.Raw("Current Time Inside Cache Tag Helper: @DateTime.Now")
+            @Html.Raw("<Cache>Current Time Inside Cache Tag Helper: @DateTime.Now</Cache>")
         </div>
         <div class="row">
             <div class="col-sm-12">
@@ -101,18 +107,16 @@
                 <div class="classWithPad">
                     <div id="DebugMe">
                         <Cache>
-                            Current Time Inside Cache Tag Helper: @DateTime.Now
+                            Time Inside Cache Tag Helper:
+                             @DateTime.Now
                         </Cache>
                     </div>
                 </div>
             </div>
-        </div>
-
-
+        </div>`
     </div>
-
-
 </div>
+    
 
 
 

@@ -75,26 +75,34 @@ namespace TagHelpersBuiltInAspNetCore
 
             app.UseIdentity();
 
-            // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
-
-            // app.UseMvc(routes =>
-            // {
-                // routes.MapRoute(
-                    // name: "default",
-                    // template: "{controller=Home}/{action=Index}/{id?}");
-            // });
-			
-			           app.UseMvc(routes =>
+            app.UseMvc(routes =>
             {
                 // need route and attribute on controller:  [Area("Blogs")]
                 routes.MapRoute(name: "areaRoute",
-                template: "{area:exists}/{controller=Home}/{action=Index}");
+                                    template: "{area:exists}/{controller=Home}/{action=Index}");
 
                 // default route for non-areas
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}/{myParam1?}/{myParam2?}/{myParam3?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
+                
+                
+                
+
             });
+
+            
         }
     }
 }
+
+// default route for non-areas
+// need route and attribute on controller:  [Area("Blogs")]
+//routes.MapRoute(name: "areaRoute",
+//                    template: "{area:exists}/{controller=Home}/{action=Index}");
+
+
+//routes.MapRoute(
+//                    name: "default",
+//                    template: "{controller=Home}/{action=Index}/{id?}/{myParam1?}/{myParam2?}/{myParam3?}");
+
