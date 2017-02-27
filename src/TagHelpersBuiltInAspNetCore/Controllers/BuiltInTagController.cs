@@ -32,6 +32,11 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
             return View();
         }
 
+        public IActionResult DistributedCacheTagHelper()
+        {
+            return View();
+        }
+
         public IActionResult CacheTagHelper(string id, string myParam1, string myParam2, string myParam3)
         {
 

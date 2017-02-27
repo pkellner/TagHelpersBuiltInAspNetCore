@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>EnvironmentTagHelper</title>
+    <title>Image Tag Helper</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="~/css/main.css" property="stylesheet" rel="stylesheet" type="text/css" media="screen" />
@@ -53,18 +53,11 @@
 
 </head>
 <body>
+    <br /><br />
     <div>
 
         <div id="RawText" style="visibility: collapse;">
-            @{
-                var rawHtml = @"<environment names='Development'>
-  <b>Dev</b>
-</environment>
-<environment names='Staging,Production'>
-  <i>Production</i>
-</environment>".Trim();
-            }
-            @Html.Raw(@rawHtml)
+            @Html.Raw(" <environment names='Development'>Dev Mode</environment>")
         </div>
 
         <div class="container backcolor classWithPad">
@@ -96,12 +89,7 @@
                 <div class="col-sm-12">
                     <div class="classWithPad">
                         <div id="DebugMe">
-                            <environment names='Development'>
-                                <b>Dev</b>
-                            </environment>
-                            <environment names='Staging,Production'>
-                                <i>Production</i>
-                            </environment>
+                            <environment names='Development'>Dev Mode</environment>
                         </div>
                     </div>
                 </div>
