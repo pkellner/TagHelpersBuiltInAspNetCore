@@ -52,6 +52,14 @@ namespace TagHelpersBuiltInAspNetCore
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            //services.AddDistributedSqlServerCache(options =>
+            //{
+            //    options.ConnectionString = @"Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;";
+            //    options.SchemaName = "dbo";
+            //    options.TableName = "TestCache";
+            //});
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,9 +93,18 @@ namespace TagHelpersBuiltInAspNetCore
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-                
-                
-                
+
+                //routes.MapRoute(
+                //    name: "route1",
+                //    template: "{controller=Home}/{action=Index}/{id?}/{myParam1?}");
+
+                //routes.MapRoute(
+                //    name: "route2",
+                //    template: "{controller=Home}/{action=Index}/{id?}/{myParam2?}");
+
+
+
+
 
             });
 

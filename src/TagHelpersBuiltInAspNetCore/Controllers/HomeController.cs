@@ -32,6 +32,22 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
             return View();
         }
 
+        //[Route("/route1", Name = "route1")]
+        //public IActionResult Route1()
+        //{
+        //    ViewData["Message"] = "Route1.";
+        //    return View("");
+        //}
+
+        //[Route("/route2", Name = "route2")]
+        //public IActionResult Route2()
+        //{
+        //    ViewData["Message"] = "Route2.";
+        //    return View();
+        //}
+
+
+
         public IActionResult Error()
         {
             return View();

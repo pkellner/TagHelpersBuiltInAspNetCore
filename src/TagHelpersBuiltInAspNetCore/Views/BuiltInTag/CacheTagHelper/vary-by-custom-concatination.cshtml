@@ -67,72 +67,60 @@
 
 </head>
 <body>
-    <div>
+<div>
 
         
 
-        <div class="container backcolor classWithPad">
+    <div class="container backcolor classWithPad">
 
-            <div class="row backcolortop">
-                <div class="col-sm-8">
-                    <h1>CacheTagHelper Attribute: @attributeName</h1>
-                </div>
+        <div class="row backcolortop">
+            <div class="col-sm-8">
+                <h1>CacheTagHelper Attribute: @attributeName</h1>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <h2>Tag Helper on Page Colorized</h2>
-                    <pre id="RawTagHelperText">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Tag Helper on Page Colorized</h2>
+                <pre id="RawTagHelperText">
                 </pre>
-                </div>
             </div>
+        </div>
 
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <h2>Actual HTML on Page Colorized</h2>
-                    <pre id="PutHereNoJquery">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Actual HTML on Page Colorized</h2>
+                <pre id="PutHereNoJquery">
                 </pre>
-                </div>
             </div>
+        </div>
             
-            <div id="RawText" style="visibility: collapse;">
-                @Html.Raw("Current Time Inside Cache Tag Helper with vary-by= @Model : @DateTime.Now")
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <h2>Rendered</h2>
-                    <div class="classWithPad">
-                        <div id="DebugMe">
-                            @*
-                                combined parameters: /CacheTagHelper/vary-by?myParam1=1&myParam2=3&myParam3=5
-                            *@ 
-                            
-                            <Cache vary-by="@Model">
-                                Current Time Inside Cache Tag Helper with vary-by=@Model.Sum" : @DateTime.Now
-                            </Cache>
-                            
-                            <Cache vary-by="@Model">
-                                Current Time Inside Cache Tag Helper with vary-by=@Model.Param1+@Model.Param2" : @DateTime.Now
-                            </Cache>
-                            
-
-                        </div>
+        <div id="RawText" style="visibility: collapse;">
+            @Html.Raw("<Cache vary-by='")@Model.Param1+@Model.Param2@Html.Raw("'>Time Inside Cache Tag Helper : @DateTime.Now</Cache>")
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Rendered</h2>
+                <div class="classWithPad">
+                    <div id="DebugMe">
+                        <Cache vary-by='@Model.Param1+@Model.Param2'>Time Inside Cache Tag Helper : @DateTime.Now</Cache>
                     </div>
                 </div>
             </div>
-
-
         </div>
 
 
     </div>
 
 
+</div>
 
 
 
-    <script>
+
+
+<script>
     $(document)
         .ready(function() {
             var options = {
@@ -164,9 +152,20 @@
             $("#PutHereNoJquery").wrapAll('<xmp id="htmlXmp" class="prettyprint" />');
         });
 
-    </script>
+</script>
 
 
 </body>
 
 </html>
+
+@*
+        combined parameters: /CacheTagHelper/vary-by?myParam1=1&myParam2=3&myParam3=5
+
+    <Cache vary-by='@Model.Param1+@Model.Param2'>Time Inside Cache Tag Helper : @DateTime.Now</Cache>
+
+    <Cache vary-by='@Model.Param1+@Model.Param2'>
+        Time Inside Cache Tag Helper : @DateTime.Now
+    </Cache>
+
+*@

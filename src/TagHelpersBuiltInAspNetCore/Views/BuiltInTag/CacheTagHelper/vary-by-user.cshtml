@@ -104,16 +104,14 @@
         </div>
 
         <div id="RawText" style="visibility: collapse;">
-            @Html.Raw("Current Time Inside Cache Tag Helper with vary-by-user='myParam1,myParam3' : @DateTime.Now")
+            @Html.Raw("<Cache vary-by-user='true'>Time Inside Cache Tag Helper : @DateTime.Now</Cache>")
         </div>
         <div class="row">
             <div class="col-sm-12">
                 <h2>Rendered</h2>
                 <div class="classWithPad">
                     <div id="DebugMe">
-                        <Cache vary-by-user="true">
-                            Current Time Inside Cache Tag Helper with vary-by-user="true" : @DateTime.Now
-                        </Cache>
+                        <Cache vary-by-user='true'>Time Inside Cache Tag Helper : @DateTime.Now</Cache>
                     </div>
                 </div>
             </div>

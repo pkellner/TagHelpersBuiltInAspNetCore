@@ -1,13 +1,16 @@
 ﻿<!DOCTYPE html>
+@model TagHelpersBuiltInAspNetCore.Controllers.ModelParam
+
 @{
     Layout = "";
 }
+
 <head>
     
 </head>
 
 @{
-    string attributeName = "vary-by-route";   
+    string attributeName = "vary-by";   
 }
 
 <html>
@@ -94,17 +97,14 @@
             </div>
             
             <div id="RawText" style="visibility: collapse;">
-                @Html.Raw("<Cache vary-by-route='make'>Time Inside Cache Tag Helper : @DateTime.Now</Cache>")
+                @Html.Raw("<Cache vary-by='")@Model.Sum@Html.Raw("'>Time Inside Cache Tag Helper : @DateTime.Now</Cache>")
             </div>
             <div class="row">
                 <div class="col-sm-12">
                     <h2>Rendered</h2>
                     <div class="classWithPad">
                         <div id="DebugMe">
-                            <Cache vary-by-route="make">
-                                Time Inside Cache Tag Helper : 
-                                @DateTime.Now
-                            </Cache>
+                            <Cache vary-by='@Model.Sum'>Time Inside Cache Tag Helper : @DateTime.Now</Cache>
                         </div>
                     </div>
                 </div>
@@ -113,10 +113,11 @@
 
         </div>
 
+
     </div>
 
 
-    
+
 
 
     <script>
@@ -152,9 +153,7 @@
         });
 
     </script>
-    
-<br/>
-    @ViewData["Message"]
+
 
 </body>
 

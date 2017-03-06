@@ -18,6 +18,41 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
             return View();
         }
 
+        public class ModelParam
+        {
+            public int Sum { get; set; }
+            public string Param1 { get; set; }
+            public string Param2 { get; set; }
+        }
+
+
+        public IActionResult CacheTagHelper(
+            string id, 
+            string myParam1, string myParam2, string myParam3)
+        {
+
+            string viewName = id == null
+                ? "CacheTagHelper/no-parameters"
+                : "CacheTagHelper/" + id;
+
+            int num1;
+            int num2;
+            int.TryParse(myParam1, out num1);
+            int.TryParse(myParam2, out num2);
+
+            var model = new ModelParam
+            {
+                Sum = num1 + num2,
+                Param1 = myParam1,
+                Param2 = myParam2
+            };
+
+            ViewData["Message"] = "Default Route";
+        
+            return View(viewName, model);
+        }
+
+
         public IActionResult AnchorTagHelper(string id)
         {
             string viewName = id == null
@@ -27,14 +62,23 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
             var speaker = new SpeakerData
             {
                 SpeakerId = 12
-            };      
+            };
 
             return View(viewName, speaker);
         }
 
+        public IActionResult DistributedCacheTagHelper(string id)
+        {
+            string viewName = id == null
+                ? "DistributedCacheTagHelper/controller-action"
+                : "DistributedCacheTagHelper/" + id;
+
+            return View(viewName);
+        }
+
         public IActionResult AnchorTagHelperRouteValue()
         {
-            string viewName = 
+            string viewName =
                 "AnchorTagHelper/" + "asp-routevalue-dash10";
 
             var speaker = new SpeakerData
@@ -61,32 +105,17 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
         {
             return View();
         }
+ 
 
-        public IActionResult CacheTagHelper(string id, string myParam1, string myParam2, string myParam3)
+        [Route("/carprice/{make}/{model}", 
+            Name = "carprice")]
+        public IActionResult CarPrice(
+            string make,string model)
         {
-
-            string viewName = id == null
-                ? "CacheTagHelper/no-parameters"
-                : "CacheTagHelper/" + id;
-
-            int num1;
-            int num2;
-            int.TryParse(myParam1, out num1);
-            int.TryParse(myParam2, out num2);
-
-            var model = new ModelParam
-            {
-                Sum = num1 + num2,
-                Param1 = "value1",
-                Param2 = "value2"
-            };
-
-
-            return View(viewName, model);
+            return View("CacheTagHelper/vary-by-route");
         }
 
        
-
 
 
 
@@ -108,13 +137,7 @@ namespace TagHelpersBuiltInAspNetCore.Controllers
         //}
     }
 
-    public class ModelParam
-    {
-        public int Sum { get; set; }
-        public string Param1 { get; set; }
-        public string Param2 { get; set; }
-    }
-
+    
     public class Speaker
     {
         public int SpeakerId { get; set; }
