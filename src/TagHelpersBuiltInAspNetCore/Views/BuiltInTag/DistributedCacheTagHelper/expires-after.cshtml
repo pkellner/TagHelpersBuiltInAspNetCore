@@ -94,20 +94,19 @@
         </div>
 
         <div id="RawText" style="visibility: collapse;">
-            @Html.Raw("Time Inside Cache Tag Helper: @DateTime.Now")
+            @Html.Raw("<distributed-cache name='my-distributed-cache-unique-key-101' expires-after='@TimeSpan.FromMinutes(2)'>Distributed Cache Tag Helper: @DateTime.Now</distributed-cache>")
+            
+            
+
         </div>
         <div class="row">
             <div class="col-sm-12">
                 <h2>Rendered</h2>
                 <div class="classWithPad">
                     <div id="DebugMe">
-                        <Cache expires-after="@TimeSpan.FromMinutes(2)">
-                            <b>Cache</b>: Time Inside Cache Tag Helper: @DateTime.Now
-                        </Cache>
-                        <br/><br/>
-                        <distributed-cache name="my-distributed-cache-unique-key-101"
-                          expires-after="@TimeSpan.FromMinutes(2)">
-                            <b>DistributedCache</b>:  Time Inside Cache Tag Helper: @DateTime.Now
+                        <distributed-cache name='my-distributed-cache-unique-key-101'
+                                           expires-after='@TimeSpan.FromMinutes(2)'>
+                            Distributed Cache Tag Helper: @DateTime.Now
                         </distributed-cache>
                     </div>
                 </div>

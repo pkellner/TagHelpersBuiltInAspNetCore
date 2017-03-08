@@ -58,7 +58,7 @@
         <div id="RawText" style="visibility: collapse;">
             @{
                 var rawHtml = @"<environment names='Development'>
-  <b>Development</b>
+  <b>Dev</b>
 </environment>
 <environment names='Staging'>
 <b>Staging</b>
@@ -99,15 +99,20 @@
                 <div class="col-sm-12">
                     <div class="classWithPad">
                         <div id="DebugMe">
+                            
                             <environment names='Development'>
-                                <b>Development</b>
+                                <script
+                                    src="//ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js">
+                                
+                                </script>
                             </environment>
-                            <environment names='Staging'>
-                                <b>Staging</b>
-                            </environment>
+
                             <environment names='Staging,Production'>
-                                <i>Staging,Production</i>
+                                <script
+                                    src="//ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js">
+                                </script>
                             </environment>
+
                         </div>
                     </div>
                 </div>
@@ -124,36 +129,36 @@
 
 
     <script>
-    $(document)
-        .ready(function() {
-            var options = {
-                "indent": "auto",
-                "indent-spaces": 2,
-                "wrap": 120,
-                "markup": true,
-                "output-xml": false,
-                "numeric-entities": true,
-                "quote-marks": true,
-                "quote-nbsp": false,
-                "show-body-only": true,
-                "quote-ampersand": false,
-                "break-before-br": true,
-                "uppercase-tags": false,
-                "uppercase-attributes": false,
-                "drop-font-tags": true,
-                "tidy-mark": false
-            }
+        $(document)
+            .ready(function() {
+                var options = {
+                    "indent": "auto",
+                    "indent-spaces": 2,
+                    "wrap": 120,
+                    "markup": true,
+                    "output-xml": false,
+                    "numeric-entities": true,
+                    "quote-marks": true,
+                    "quote-nbsp": false,
+                    "show-body-only": true,
+                    "quote-ampersand": false,
+                    "break-before-br": true,
+                    "uppercase-tags": false,
+                    "uppercase-attributes": false,
+                    "drop-font-tags": true,
+                    "tidy-mark": false
+                }
 
-            var rawTag = $("#RawText")[0].innerHTML;
-            debugger;
-            $("#RawTagHelperText").text(rawTag.trim());
-            $("#RawTagHelperText").wrapAll('<xmp id="htmlXmp" class="prettyprint" />');
+                var rawTag = $("#RawText")[0].innerHTML;
+                debugger;
+                $("#RawTagHelperText").text(rawTag.trim());
+                $("#RawTagHelperText").wrapAll('<xmp id="htmlXmp" class="prettyprint" />');
 
-            var innerHtmlNojQuery = $("div#DebugMe")[0].innerHTML;
-            var result1 = tidy_html5(innerHtmlNojQuery, options);
-            $("#PutHereNoJquery").text(result1);
-            $("#PutHereNoJquery").wrapAll('<xmp id="htmlXmp" class="prettyprint" />');
-        });
+                var innerHtmlNojQuery = $("div#DebugMe")[0].innerHTML;
+                var result1 = tidy_html5(innerHtmlNojQuery, options);
+                $("#PutHereNoJquery").text(result1);
+                $("#PutHereNoJquery").wrapAll('<xmp id="htmlXmp" class="prettyprint" />');
+            });
 
     </script>
 

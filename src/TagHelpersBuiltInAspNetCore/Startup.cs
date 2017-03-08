@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Caching.SqlServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -41,7 +43,9 @@ namespace TagHelpersBuiltInAspNetCore
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                    options.UseSqlServer(
+                        Configuration.
+                        GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -49,18 +53,51 @@ namespace TagHelpersBuiltInAspNetCore
 
             services.AddMvc();
 
+            services.AddDistributedSqlServerCache(opt =>
+            {
+                opt.ConnectionString = 
+                  Configuration.GetConnectionString("DefaultConnection");
+                opt.SchemaName = "dbo";
+                opt.TableName = "SQLCache";
+            });
+
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
-
-            //services.AddDistributedSqlServerCache(options =>
-            //{
-            //    options.ConnectionString = @"Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;";
-            //    options.SchemaName = "dbo";
-            //    options.TableName = "TestCache";
-            //});
-
         }
+
+
+
+
+
+
+
+
+        //services.AddDistributedSqlServerCache(opt =>
+        //    {
+        //        //opt.ConnectionString = "Data Source=.;Initial Catalog=cachetest;Persist Security Info=True;Trusted_Connection=Yes;";
+        //        opt.ConnectionString = Configuration.GetConnectionString("DefaultConnection");
+        //        opt.SchemaName = "dbo";
+        //        opt.TableName = "SQLCache";
+        //    });
+
+//        CREATE TABLE[dbo].[SQLCache](    
+//            [Id]
+//        [nvarchar](449) NOT NULL,
+
+//[Value][varbinary](max) NOT NULL,
+
+//[ExpiresAtTime][datetimeoffset](7) NOT NULL,
+
+//[SlidingExpirationInSeconds][bigint]
+//        NULL,   
+//            [AbsoluteExpiration]
+//        [datetimeoffset](7) NULL,   
+//            CONSTRAINT[pk_Id] PRIMARY KEY CLUSTERED([Id] ASC) WITH(PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+//            ON[PRIMARY]) ON[PRIMARY] TEXTIMAGE_ON[PRIMARY]
+
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
